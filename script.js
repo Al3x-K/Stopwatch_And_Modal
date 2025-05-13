@@ -88,8 +88,28 @@ const ShowHistory = () => // Show the history of times
     });
 }
 
+const ShowModal = () => // Show the modal
+{
+    if(modalShadow.style.display === "block") // If the modal is already open, close it
+    {
+        modalShadow.style.display = "none"; 
+        return;
+    }
+    else // Otherwise, open the modal
+    {
+        modalShadow.style.display = "block"; 
+    }
+
+    modalShadow.classList.toggle('modal-animation'); // Add the fade-in class to the modal shadow
+}
+
 startBtn.addEventListener("click", handleStart);
 pauseBtn.addEventListener("click", handlePause);
 stopBtn.addEventListener("click", handleStop);// Stop the stopwatch
 resetBtn.addEventListener("click", HandleReset);
 historyBtn.addEventListener("click", ShowHistory); // Show the history of times
+
+infoBtn.addEventListener("click", ShowModal); // Show the modal
+closeModalBtn.addEventListener("click", ShowModal); // Close the 
+
+window.addEventListener("click", e => e.target === modalShadow ? ShowModal() : false); // Close the modal when clicking outside of it
