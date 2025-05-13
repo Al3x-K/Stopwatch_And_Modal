@@ -7,9 +7,17 @@ const stopwatch = document.querySelector(".stopwatch");
 const time = document.querySelector(".time");
 const timeList = document.querySelector(".time-list");
 
-const infoBtn = document.querySelector(".info");
+const infoBtn = document.querySelector(".fa-question");
 const modalShadow = document.querySelector(".modal-shadow");
 const closeModalBtn = document.querySelector(".close");
+
+const paintBtn = document.querySelector(".fa-paint-brush");
+const colorPanel = document.querySelector(".colors");
+const colorOne = document.querySelector(".one");
+const colorTwo = document.querySelector(".two");
+const colorThree = document.querySelector(".three");
+const colorFour = document.querySelector(".four");
+let root = document.documentElement;
 
 
 let countTime;
@@ -103,6 +111,8 @@ const ShowModal = () => // Show the modal
     modalShadow.classList.toggle('modal-animation'); // Add the fade-in class to the modal shadow
 }
 
+
+
 startBtn.addEventListener("click", handleStart);
 pauseBtn.addEventListener("click", handlePause);
 stopBtn.addEventListener("click", handleStop);// Stop the stopwatch
@@ -113,3 +123,32 @@ infoBtn.addEventListener("click", ShowModal); // Show the modal
 closeModalBtn.addEventListener("click", ShowModal); // Close the 
 
 window.addEventListener("click", e => e.target === modalShadow ? ShowModal() : false); // Close the modal when clicking outside of it
+
+paintBtn.addEventListener("click", () => 
+{
+    colorPanel.classList.toggle("show-colors"); // Toggle the color panel
+});
+
+colorOne.addEventListener("click", () => // Change the color to the first color
+{
+    root.style.setProperty("--first-color", "rgb(250, 124, 6)"); // Change the main color to red
+    root.style.setProperty("--hover-color", "rgb(161, 81, 5)"); // Change the hover color to red
+});
+
+colorTwo.addEventListener("click", () => // Change the color to the first color
+{
+    root.style.setProperty("--first-color", "rgb(6, 173, 250)"); // Change the main color to red
+    root.style.setProperty("--hover-color", "rgb(6, 173, 250)"); // Change the hover color to red
+});
+
+colorThree.addEventListener("click", () => // Change the color to the first color
+{
+    root.style.setProperty("--first-color", "rgb(0, 224, 43)"); // Change the main color to red
+    root.style.setProperty("--hover-color", "rgb(0, 255, 42)"); // Change the hover color to red
+});
+
+colorFour.addEventListener("click", () => // Change the color to the first color
+{
+    root.style.setProperty("--first-color", "rgb(232, 85, 200)"); // Change the main color to red
+    root.style.setProperty("--hover-color", "rgb(161, 61, 139)"); // Change the hover color to red
+});
