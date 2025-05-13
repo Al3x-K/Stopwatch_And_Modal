@@ -16,6 +16,8 @@ let countTime;
 let minutes = 0;
 let seconds = 0;
 
+let timesArray = []; // Array to store the times
+
 const handleStart = () => // Start the stopwatch
 {
     clearInterval(countTime); // Clear any existing interval
@@ -48,6 +50,12 @@ const handlePause = () => // Pause the stopwatch
 
 const handleStop = () => // Stop the stopwatch
 {
+    time.innerHTML = `Last time: ${stopwatch.textContent}`; // Show the last time
+    if(stopwatch.textContent !== "0:00") // If the stopwatch is already stopped, do nothing
+    {
+        time.style.visibility = "visible"; // Show the time list
+        timesArray.push(stopwatch.textContent); 
+    }
     clearInterval(countTime);
     stopwatch.textContent = "0:00"; // Reset the stopwatch display
     timeList.textContent = ""; // Clear the time list
