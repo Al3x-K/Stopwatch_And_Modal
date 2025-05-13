@@ -56,15 +56,40 @@ const handleStop = () => // Stop the stopwatch
         time.style.visibility = "visible"; // Show the time list
         timesArray.push(stopwatch.textContent); 
     }
-    clearInterval(countTime);
+    ClearData(); 
+}
+
+const HandleReset = () => // Reset the stopwatch
+{
+    time.style.visibility = "hidden"; 
+    timesArray = []; // Clear the times array
+    ClearData(); // Clear the stopwatch and reset the display
+}
+
+const ClearData = () => 
+{
+   clearInterval(countTime);
     stopwatch.textContent = "0:00"; // Reset the stopwatch display
     timeList.textContent = ""; // Clear the time list
     minutes = 0; 
     seconds = 0; 
+}
 
-    
+const ShowHistory = () => // Show the history of times
+{
+    timeList.textContent = ""; // Clear the time list
+    let num = 1;
+    timesArray.forEach(time =>
+    {
+        const newTime = document.createElement("li"); // Create a new list item
+        newTime.innerHTML = `Time number ${num}: <span>${time}</span>`;
+        timeList.appendChild(newTime); 
+        num++;
+    });
 }
 
 startBtn.addEventListener("click", handleStart);
 pauseBtn.addEventListener("click", handlePause);
 stopBtn.addEventListener("click", handleStop);// Stop the stopwatch
+resetBtn.addEventListener("click", HandleReset);
+historyBtn.addEventListener("click", ShowHistory); // Show the history of times
